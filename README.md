@@ -23,15 +23,33 @@ Create a simple To-Do List Manager where users can add tasks, mark them as compl
 
 ### Working 
 
-- Add Task 
+#### Add Task
 
-- Mark Completed 
+![1](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/9a33f7d5-fa53-464d-a901-17f6da2638e9)
+![2](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/e4bd0f0e-191b-4d57-be3b-177073ab1020)
+![3](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/56b3fc3d-1de9-40fe-aefa-f1bd42626ca7)
 
+#### Mark Completed
+ 
+![8](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/6b2c34a8-79b4-442e-b29b-17f89e8f44c4)
+- Mark Task as completed
+![4](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/10646f17-b801-41c3-97ce-15cd1bcc1855)
+
+#### Delete Task
+
+![12](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/a42bf491-780c-43a3-ad7b-893b8aad540f)
 - Delete Task
+![7](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/f34c66ec-dcf6-40da-ab1f-99ea796d43d9)
 
-- View Task
+#### View Task
 
-
+![9](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/c4f4c99e-131f-42ce-9a85-705560612f13)
+![11](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/14ab2e7f-bb29-46da-9509-7331fde0536e)
+![10](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/a0155524-030e-4c30-9905-c703abb5cee0)
+- show Completed
+![5](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/c4c66179-9602-4aa9-97b6-88d5f5d2c84e)
+- Show panding
+![6](https://github.com/Mohmmadali-007/Educational_Initiative_Task/assets/98652728/ccfe2aa1-fbcb-4bcb-98c0-6b27ad762148)
 
 
 
