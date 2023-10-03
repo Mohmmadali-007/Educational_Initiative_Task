@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <div class="task-input">
+            <input type="text" id="task-input" placeholder="Enter a task...">
+            <input type="disc" id="Discription-input" placeholder="Enter a Discription...">
+            <input type="date" id="due-date" placeholder="Due Date">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+        <div class="task-list">
+            <h2>Task List</h2>
+            <ul id="tasks"></ul>
+        </div>
+        <div class="task-actions">
+            <button id="show-all">Show All</button>
+            <button id="show-completed">Show Completed</button>
+            <button id="show-pending">Show Pending</button>
+            <button id="due-today">Due Today</button>
+        </div>
+    </div>
+    <script>
+        let tasks = [];
+
+        function renderTasks(filter = 'all') {
+            const tasksList = document.getElementById('tasks');
+            tasksList.innerHTML = '';
+            const filteredTasks = filterTasks(filter);
+            filteredTasks.forEach((task, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${task.text}</span>
+                    <span>${task.disc ? ` -- Discription : ${task.disc} --` : ''}</span>
+                    <span>${task.dueDate ? `Due: ${task.dueDate}` : ''}</span>
+                    <button onclick="toggleComplete(${index})">${task.completed ? 'Uncomplete' : 'Complete'}</button>
+                    <button onclick="deleteTask(${index})">Delete</button>
+                `;
+                listItem.style.backgroundColor = task.completed ? '#cfc' : '#f9f9f9';
+                tasksList.appendChild(listItem);
+            });
+        }
+
+        function filterTasks(filter) {
+            const currentDate = new Date().toISOString().split('T')[0];
+            if (filter === 'all') {
+                return tasks;
+            } else if (filter === 'completed') {
+                return tasks.filter(task => task.completed);
+            } else if (filter === 'pending') {
+                return tasks.filter(task => !task.completed);
+            } else if (filter === 'dueToday') {
+                return tasks.filter(task => task.dueDate === currentDate);
+            }
+        }
+
+        function toggleComplete(index) {
+            tasks[index].completed = !tasks[index].completed;
+            renderTasks();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            renderTasks();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const taskInput = document.getElementById('task-input');
+            const discInput = document.getElementById('Discription-input');
+            const dueDateInput = document.getElementById('due-date');
+            const addTaskBtn = document.getElementById('add-task-btn');
+            const showAllBtn = document.getElementById('show-all');
+            const showCompletedBtn = document.getElementById('show-completed');
+            const showPendingBtn = document.getElementById('show-pending');
+            const dueTodayBtn = document.getElementById('due-today');
+
+            addTaskBtn.addEventListener('click', function () {
+                const taskText = taskInput.value.trim();
+                const discText = discInput.value.trim();
+                const dueDate = dueDateInput.value;
+                if (taskText && discText && isValidDate(dueDate) && isFutureDate(dueDate)) {
+                    const newTask = { text: taskText, disc: discText, completed: false, dueDate };
+                    tasks.push(newTask);
+                    taskInput.value = '';
+                    discInput.value = '';
+                    dueDateInput.value = '';
+                    renderTasks();
+                } else {
+                    alert('Invalid date format or past date. Please enter a valid future date.');
+                }
+            });
+
+            showAllBtn.addEventListener('click', () => renderTasks('all'));
+            showCompletedBtn.addEventListener('click', () => renderTasks('completed'));
+            showPendingBtn.addEventListener('click', () => renderTasks('pending'));
+            dueTodayBtn.addEventListener('click', () => renderTasks('dueToday'));
+
+            renderTasks();
+        });
+
+        function isValidDate(dateString) {
+            const regex = /^\d{4}-\d{2}-\d{2}$/;
+            return regex.test(dateString);
+        }
+
+        function isFutureDate(dateString) {
+            const currentDate = new Date().toISOString().split('T')[0];
+            return dateString >= currentDate;
+        }
+    </script>
+</body>
+</html>
